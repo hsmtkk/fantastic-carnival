@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/guregu/dynamo"
 )
@@ -29,7 +30,7 @@ func main() {
 	}
 
 	sess := session.Must(session.NewSession())
-	db := dynamo.New(sess)
+	db := dynamo.New(sess, &aws.Config{Region: aws.String("ap-northeast-1")})
 	table := db.Table("test")
 
 	item := schema{url, hash}
