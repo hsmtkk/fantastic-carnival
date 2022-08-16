@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -29,4 +30,5 @@ func main() {
 	if err := table.Get("url", url).One(&result); err != nil {
 		log.Fatalf("get failed; %s", err)
 	}
+	fmt.Printf("result: %v\n", result)
 }
