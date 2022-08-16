@@ -10,8 +10,8 @@ import (
 )
 
 type schema struct {
-	url  string `dynamo:"url"`
-	hash string `dynamo:"hash"`
+	url    string `dynamo:"url,hash"`
+	sha256 string `dynamo:"sha256"`
 }
 
 func main() {
