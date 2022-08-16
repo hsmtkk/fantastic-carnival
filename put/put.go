@@ -14,8 +14,8 @@ import (
 )
 
 type schema struct {
-	url    string `dynamo:"url,hash"`
-	sha256 string `dynamo:"sha256"`
+	URL    string `dynamo:"url"`
+	SHA256 string `dynamo:"sha256"`
 }
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 	db := dynamo.New(sess, &aws.Config{Region: aws.String("ap-northeast-1")})
 	table := db.Table("test")
 
-	item := schema{url, hash}
+	item := schema{URL: url, SHA256: hash}
 	if err := table.Put(item).Run(); err != nil {
 		log.Fatalf("put failed; %s", err)
 	}
